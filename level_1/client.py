@@ -4,7 +4,7 @@ from websockets.sync.client import connect
 SERVER_URL = "ws://localhost:8765"
 message_to_send = input("Type a message: ")
 
-def handleReceivedMessage(websocket):
+def handle_received_message(websocket):
     # cria um for para cada mensagem recebida de websocket
     for message in websocket:
         # exibe a mensagem do servidor
@@ -16,7 +16,7 @@ def main():
     with connect(SERVER_URL) as websocket:
         # envia a mensagem para o sevidor
         websocket.send(message=message_to_send)
-        handleReceivedMessage(websocket)
+        handle_received_message(websocket)
 
 try:
     main()

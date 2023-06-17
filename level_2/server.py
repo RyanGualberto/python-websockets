@@ -7,7 +7,7 @@ HOST = "localhost"
 PORT = 8765
 
 # cria uma função que será passada como parametro do server, e irá receber e enviar as mensagens
-async def handleMessage(websocket):
+async def handle_websocket_message(websocket):
     # envia essa mensagem para os clientes que se conectarem
     await websocket.send("Conexão WebSocket estabelecida")
     # cria um for para cada mensagem recebida de websocket
@@ -38,7 +38,7 @@ async def handleMessage(websocket):
 
 # função que sobe o websocket server
 async def main():
-    async with serve(handleMessage, HOST, PORT):
+    async with serve(handle_websocket_message, HOST, PORT):
         await asyncio.Future() 
 
 asyncio.run(main())
