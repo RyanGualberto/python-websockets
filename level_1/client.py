@@ -13,4 +13,7 @@ def main():
         # exibe a mensagem do servidor
         print(f"Received: {message}")
 
-main()
+try:
+    main()
+except KeyboardInterrupt:
+    print("Encerrando.")
