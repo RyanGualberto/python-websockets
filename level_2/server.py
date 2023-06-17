@@ -23,13 +23,14 @@ async def handleMessage(websocket):
             if number >= 0:
                 result = calcular_fatorial(number)
                 response = f"O fatorial de {number} é {result}"
+                await websocket.send(response)
                 print(response)
             # caso o número seja menor que 0 imprime que é um número inválido
             else:
                 await websocket.send("Número inválido. Por favor, envie um número inteiro positivo.")
         # caso a mensagem não contenha a palavra fatorial apenas, mostra a mensagem enviada pelo cliente                
         else:
-            message = f"mensagem recebida pelo cliente {message}"
+            message = f"Comando não reconhecido: {message}"
             await websocket.send(message)
             print(message)
         
